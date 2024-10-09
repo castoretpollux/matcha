@@ -1,0 +1,198 @@
+common:
+  timezone: Europe/Paris
+  language_code: fr-fr
+  datetime_format: '%d/%m/%Y %H:%M:%S'
+  venv_dir: /home/castor/.virtualenvs
+  nvm_dir: /home/castor/.nvm
+  nvm_version: 18.19
+  hostname: www.example.com
+  redis: # Used by backend and workers
+    host: localhost
+    port: 6379
+    timeout: 360
+    db:
+      default: 1
+      populate: 2
+      search: 3
+  big_llm: &big_llm
+    llama3  # Note : to be used by Ollama
+  small_llm: &small_llm 
+    gemma:2b  # Note : to be used by Ollama
+  embedding_model: &embedding_model
+    camembert  # just to compute embedding (note : it's a good embedding model for french text, not for other languages)
+  title_llm: &title_llm
+    gemma:2b
+  django_secret: put_here_your_django_secret_for_matcha_app
+  search_secret: put_here_your_django_secret_for_searchapp_app
+  cookie_age: 86400 # 1 day in seconds
+
+processes:
+
+  - alias: core.backend
+    settings: &core_backend_settings
+      protocol: http
+      hostname: localhost
+      port: 8000
+      replicate_api_token: put_here_your_replicate_api_token
+      openai_api_key: put_here_your_openai_api_key
+      db_name: matcha
+      db_user: castor
+      db_password: castor
+      ollama_protocol: http
+      ollama_hostname: {common.hostname}
+      ollama_port: 11434
+    computed:
+      url: "{process.settings.protocol}://{process.settings.hostname}:{process.settings.port}"
+      ollama_url: "{process.settings.ollama_protocol}://{process.settings.ollama_hostname}:{process.settings.ollama_port}"
+    run:
+      workdir: ./
+      env: *core_backend_settings
+      precmd: . {common.venv_dir}/matcha/bin/activate
+      cmd: python3 manage.py runserver {process.settings.hostname}:{process.settings.port}
+
+  - alias: core.defaultworker1
+    run:
+      workdir: ./
+      env: *core_backend_settings
+      precmd: . {common.venv_dir}/matcha/bin/activate
+      cmd: python3 manage.py rqworker default
+
+  - alias: core.defaultworker1
+    run:
+      workdir: ./
+      env: *core_backend_settings
+      precmd: . {common.venv_dir}/matcha/bin/activate
+      cmd: python3 manage.py rqworker default
+
+  - alias: core.populateworker1
+    run:
+      workdir: ./
+      env: *core_backend_settings
+      precmd: . {common.venv_dir}/matcha/bin/activate
+      cmd: python3 manage.py rqworker populate
+
+  - alias: core.populateworker2
+    run:
+      workdir: ./
+      env: *core_backend_settings
+      precmd: . {common.venv_dir}/matcha/bin/activate
+      cmd: python3 manage.py rqworker populate
+
+  - alias: core.frontend
+    settings:
+      protocol: http
+      hostname: localhost
+      port: 3000
+    computed:
+      url: "{process.settings.protocol}://{process.settings.hostname}:{process.settings.port}"
+    run:
+      workdir: ./frontend
+      precmd: . {common.nvm_dir}/nvm.sh && nvm use {common.nvm_version}
+      cmd: npm run dev
+      env:
+        VITE_BACKEND_URL: "{processes.core.backend.computed.url}"
+        VITE_BASE_URL: "{process.computed.url}"
+        VITE_PORT: "{process.settings.port}"
+        NVM_DIR: "{common.nvm_dir}"
+
+  - alias: core.search
+    settings: &core_search_settings
+      protocol: http
+      hostname: localhost
+      port: 8081
+      db_name: searchapp
+      db_user: castor
+      db_password: castor
+      use_gpu: 0
+      part_size: 1024
+      part_overlap: 128
+      summary_model: *big_llm
+      embedding_model: *embedding_model
+    computed:
+      url: "{process.settings.protocol}://{process.settings.hostname}:{process.settings.port}"
+    run:
+      workdir: processes/searchapp
+      precmd: . {common.venv_dir}/searchapp/bin/activate
+      cmd: python3 manage.py runserver {process.settings.hostname}:{process.settings.port}
+      env: *core_search_settings
+
+  - alias: core.searchworker1
+    run:
+      workdir: processes/searchapp
+      env: *core_search_settings
+      precmd: . {common.venv_dir}/searchapp/bin/activate
+      cmd: python3 manage.py rqworker search
+
+  - alias: core.searchworker2
+    run:
+      workdir: processes/searchapp
+      env: *core_search_settings
+      precmd: . {common.venv_dir}/searchapp/bin/activate
+      cmd: python3 manage.py rqworker search
+
+  - alias: core.stablediffusionxl
+    settings: &core_stablediffusion_settings
+      protocol: http
+      hostname: localhost
+      port: 8082
+    computed:
+      url: "{process.settings.protocol}://{process.settings.hostname}:{process.settings.port}"
+    run:
+      workdir: processes/stablediffusionapp
+      precmd: . {common.venv_dir}/stablediffusionapp/bin/activate
+      cmd: python3 -m uvicorn main:app --reload --host {process.settings.hostname} --port {process.settings.port}
+      env:
+        model: runwayml/stable-diffusion-v1-5 # BIG SDXL stabilityai/stable-diffusion-xl-base-1.0
+        debug: true
+
+  - alias: contrib.whisper
+    settings: &contrib_whisper_settings
+      protocol: http
+      hostname: 0.0.0.0
+      port: 8083
+      model: openai/whisper-tiny 
+      use_gpu: 1
+      cors_allow_origins: "*"
+      debug: 0
+      language: french # By default, english will be used if this settings is not defined. See, for instance, https://huggingface.co/openai/whisper-tiny to know which language can be used
+    computed:
+      url: "{process.settings.protocol}://{process.settings.hostname}:{process.settings.port}"
+    run:
+      workdir: contrib/castoretpollux/whisper
+      env: *contrib_whisper_settings
+      precmd: . {common.venv_dir}/whisperapp/bin/activate
+      cmd: uvicorn main:app --host {process.settings.hostname} --port {process.settings.port}
+
+
+default_pipeline: instance.instance.ollama_llama3
+
+pipelines:
+
+  - alias: core.searchupload
+    backend: machinery.pipelines.featureextractor.searchupload.SearchUploadPipeline
+    settings:
+      model: *big_llm
+
+  - alias: core.demo
+    description: Demo
+    backend: machinery.pipelines.demo.demo.EchoPipeline
+
+factory_instances:
+
+  - alias: instance.ollama_llama3
+    description: text generation
+    factory: machinery.factories.ollama.factory.OllamaRunnerFactory
+    params:
+      model: llama3
+      system: You're a nice assistant and you have to answer in French.
+
+factories:
+
+  - alias: factory.search
+    backend: machinery.factories.search.factory.SearchFactory
+
+  - alias: factory.ollama
+    backend: machinery.factories.ollama.factory.OllamaRunnerFactory
+
+  - alias: factory.translation
+    backend: machinery.factories.translation.factory.TranslationFactory

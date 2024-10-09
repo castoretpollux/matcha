@@ -1,0 +1,31 @@
+{% load i18n %}
+{% for document in documents %}
+    {% if not document_context.error %}
+        <ul class="context">
+            {% for key, content in document_context.items %}
+                <li>
+                    <strong>{{ key|capfirst }}:</strong>
+                    {% if content.type == 'string' %}
+                        {{ content.value }}
+                    {% elif content.type == 'list' %}
+                        <ul>
+                            {% for item in content.value %}
+                                <li>{{ item }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% elif content.type == 'dict' %}
+                        <ul>
+                            {% for sub_key, sub_value in content.value.items %}
+                                <li>{{ sub_key }}: {{ sub_value }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% else %}
+                        {{ content.value }}
+                    {% endif %}
+                </li>
+            {% endfor %}    
+        </ul>
+    {% else %}
+    <p>{{ document_context.error }}</p>
+    {% endif %}
+{% endfor %}

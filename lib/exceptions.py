@@ -1,0 +1,2 @@
+class UnhandledConfigTypeException(Exception):
+    pass

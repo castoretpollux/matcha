@@ -1,0 +1,67 @@
+{% load i18n %}
+<div class="cards__cv">
+    {% for document in documents %}
+
+    {% for key, context in document.context.items %}
+    {% if key == alias %}
+    <div class="card">
+        <div class="card-body">
+
+            <h5 class="card-title">
+                {% if context.extracted.poste_recherche %}
+                {{ context.extracted.poste_recherche }}
+                {% else %}
+                {% translate "Not specified" %}
+                {% endif %}
+            </h5>
+
+            <p class="card-text">
+                <span class="card-text card-text-uppercase">
+                    {% if context.extracted.nom_et_prenom %}
+                    🦸‍♀️{{ context.extracted.nom_et_prenom }}
+                    {% else %}
+                    🦸‍♀️ {% translate "Not specified" %}
+                    {% endif %}
+                </span>
+            </p>
+            <p class="card-text">
+                <span class="card-legend">
+                    {% if context.extracted.annees_dexperiences %}
+                    ⚡️ XP : {{ context.extracted.annees_dexperiences }} {% if context.extracted.annees_dexperiences|length <= 2 %}an(s){% endif %}
+                    {% else %}
+                    ⚡️ XP : {% translate "Not specified" %}
+                    {% endif %}
+                </span>
+            </p>
+            
+            <ul class="card-list">
+                {% for item in context.extracted.cinq_competences_principales %}
+                <li>{{ item }}</li>
+                {% endfor %}
+            </ul>
+
+            {% if context.extracted.langues %}
+            <span class="card-subtitle">💬 {% translate "Languages" %}</span>
+            <ul class="card-list">
+                {% for item in context.extracted.langues %}
+                <li>{{ item }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+
+            {% if context.extracted.email or document.url %}
+            <div class="card-buttons">
+                {% if document.url %}
+                <a target="_blank" title="file" href="{{document.url}}" rel="noopener">📄</a>
+                {% endif %}
+                {% if context.extracted.email %}
+                <a title="contact" href="mailto:{{context.extracted.email}}">✉️</a>
+                {% endif %}
+            </div>
+            {% endif %}
+        </div>
+    </div>
+    {% endif %}
+    {% endfor %}
+    {% endfor %}
+</div>

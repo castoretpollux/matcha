@@ -1,0 +1,91 @@
+.login {
+    height: 100vh;
+    
+    background: $primary-color;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    &__image {
+        transform: translateY(-20px);
+        &__content {
+            width: 80px;
+            border-radius: 50%;
+        }
+    }
+
+    &__title {
+        color: $white;
+        font-size: 24px;
+        text-align: center;
+        &::first-letter {
+            text-transform: capitalize;
+        }
+    }
+
+    &__card {
+        margin-top: 30px;
+        &__form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+
+            &__input {
+                display: flex;
+                flex-direction: column;
+
+                label {
+                    color: $grey-light;
+                    font-size: 12px;
+                    margin-bottom: 5px;
+                    display: flex;
+                    justify-content: space-between;
+                    &::first-letter {
+                        text-transform: capitalize;
+                    }
+                    a {
+                        text-decoration: none;
+                        &:hover {
+                            text-decoration: underline;
+                        }
+                    }
+                }
+
+                input {
+                    padding: 10px;
+                    font-size: 18px;
+                    border-radius: 5px;
+                    color: $primary-color;
+                    &.error {
+                        outline: 1px solid rgba(255, 65, 65, 0.699);
+                    }
+                }
+
+                .error-msg {
+                    color: rgb(255, 65, 65);
+                    padding: 5px 0;
+                    display: none;
+                }
+            }
+
+            &__submit {
+                width: 100%;
+                background: $tertiary-color;
+                color: $grey-light;
+                font-size: 18px;
+                padding: 10px 0;
+                border-radius: 5px;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                &:hover {
+                    background: $secondary-color;
+                }
+                &::first-letter {
+                    text-transform: capitalize;
+                }
+            }
+        }
+    }
+}

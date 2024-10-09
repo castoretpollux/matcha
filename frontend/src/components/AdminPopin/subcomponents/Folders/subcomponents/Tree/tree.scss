@@ -1,0 +1,349 @@
+.tree {
+    color: $white;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    overflow-x: hidden;
+
+    &__loader {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        display: none;
+        &.load {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: $tertiary-color;
+            border-radius: 15px;
+            svg {
+                height: 25px;
+                width: 25px;
+                animation: spinner 3s linear infinite;
+            }
+        }
+    }
+
+    &__button {
+        position: relative;
+
+        display: flex;
+        align-items: center;
+        gap: 0;
+ 
+        width: max-content;
+        padding: 5px;
+        border-radius: 5px;
+  
+        color: $white;
+        font-size: 16px;
+        cursor: pointer;
+
+        transition: all 0.3s ease;
+
+        span {
+            color: $white;
+            padding-left: 5px;
+        }
+
+        &:hover {
+            .tree__button__option {
+                display: flex;
+            }
+        }
+
+        &.hover {
+            background: $tertiary-color;
+            padding: 10px 20px;
+        }
+
+        &__content {
+            color: $white;
+            text-align: left;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            font-size: 16px;
+
+            width: max-content;
+            max-width: calc(100% - 25px);
+            height: 19px;
+            margin-left: 5px;
+            
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+
+            svg {
+                width: 14px;
+                height: 14px;
+                opacity: 0.5;
+            }
+
+            a {
+                text-decoration: none;
+            }
+
+            &:hover {
+                .tree__button__content__delete {
+                    display: block;
+                }
+            }
+
+            &__delete {
+                width: 14px;
+                height: 14px;
+                margin-left: 5px;
+                cursor: pointer;
+                display: none;
+                &:hover {
+                    svg {
+                        opacity: 1;
+                        stroke: $red;
+                        path {
+                            stroke: $red;
+                        }
+                    }
+                }    
+            }
+
+            &.error {
+                color: $red;    
+            }
+
+        }
+
+        &__option {
+            color: $white;
+            cursor: pointer;
+            margin-left: 10px;
+            opacity: 0.5;
+            display: none;
+            align-items: center;
+    
+            svg {
+                width: 18px;
+                height: 18px;
+            }
+
+            &:hover {
+                opacity: 1;
+                color: $green;
+                svg {
+                    path {
+                        stroke: $green;
+                    }
+                }
+            }
+
+            &__delete {
+                &:hover {
+                    opacity: 1;
+                    svg {
+                        stroke: $red;
+                        path {
+                            stroke: $red;
+                        }
+                    }
+                }    
+            }
+
+            &__addfile {
+                opacity: 0;
+                position: absolute;
+                z-index: -1;
+            }
+        }
+    }
+
+    &__list {
+        display: none;
+        max-height: 0;
+
+        &.open {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            max-height: unset;
+            height: max-content;
+        }
+
+        &__content {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+
+            padding-left: 25px;
+            
+            &__label {
+                color: $white;
+                background-color: #666;
+                border-radius: 2px;
+                padding: 0 5px;
+                margin: 0 5px;
+            }
+            
+            &__item {
+                color: $white;
+                overflow: hidden;
+                max-width: 100%;
+
+
+                &__loader {
+
+                    .tree__button__content {
+                        display: flex;
+                        align-items: center;
+                        gap: 5px;
+                        opacity: 0.5;
+                        
+                        &.progress {
+                            svg {
+                                height: 18px;
+                                width: 18px;
+                                animation: spinner 3s linear infinite;
+                            }
+                        }
+                        
+                        &.error {
+                            opacity: 1;
+                            svg {
+                                &:hover {
+                                    cursor: pointer;
+                                }
+                                height: 20px;
+                                width: 20px;
+                                opacity: 1;
+                                stroke: $red;
+                                path {
+                                    stroke: $red;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            &__loadmore {
+                width: max-content;
+                margin-left: 5px;
+                cursor: pointer;
+                opacity: 0.5;
+                transition: all 0.3s ease;
+                &:hover {
+                    opacity: 1;
+                }
+            }
+        }
+        &__folder {
+
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+
+            padding-left: 25px;
+
+            &__add {
+                position: relative;
+
+                display: flex;
+                flex-direction: column;
+
+
+                &__row {
+                    padding-left: 30px;
+                    width: 100%;
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    &:last-of-type {
+                        margin-top: 5px;
+                        margin-left: 20px;
+                    }
+                    label {
+                        color: $white;
+                        display: flex;
+                        align-items: center;
+                        cursor: pointer;
+                    }
+
+                    input[type="checkbox"] {
+                        position: relative;
+                        width: 15px;
+                        height: 15px;
+                        color: $black;
+                        border: 1px solid $grey;
+                        border-radius: 4px;
+                        appearance: none;
+                        outline: 0;
+                        cursor: pointer;
+                        // transition: background 175ms cubic-bezier(0.1, 0.1, 0.25, 1);
+                        &::before {
+                          content: '';
+                          display: block;
+                          width: 5px;
+                          height: 8px;
+                          border-style: solid;
+                          border-color: $white;
+                          border-width: 0 2px 2px 0;
+                          transform: rotate(45deg);
+                          opacity: 0;
+                          margin-left: 3px;
+                        }
+                        &:checked {
+                          color: $white;
+                          border-color: $green;
+                          background: $green;
+                          &::before {
+                            opacity: 1;
+                          }
+                        }
+                      }
+                }
+
+                &__submit {
+                    svg {
+                        margin-left: 5px;
+                    }
+                    &:first-of-type {
+                        svg {
+                            margin-left: 10px;
+                        }     
+                    }
+                    cursor: pointer;
+                }
+
+                &__input {
+                    padding: 2px;
+                    border: 1px solid transparent;
+                    margin-left: 5px;
+                    margin-top: 3px;
+
+                    &.error {
+                        border: 1px solid red;
+                    }
+                    &__error {
+                        color: $red;
+                        position: absolute;
+                        bottom: -15px;
+                        margin-left: 25px;
+                        font-size: 12px;
+                    }
+                }
+            }
+        }
+    }
+
+    &__icon {
+        display: none;
+        width: 18px;
+        height: 18px;
+        &.open {
+            display: block;
+        }
+        &__add {
+            padding-left: 30px;
+        }
+    }
+
+}

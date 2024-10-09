@@ -1,0 +1,125 @@
+.factoryform {
+    position: relative;
+    height: calc(100% - 35px);
+    .renderer_label, .renderer_label span, .label {
+        color: $white;
+    }
+    .horizontal-layout {
+        padding-bottom: 10px;        
+    }
+
+    &__form {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        &__title {
+            color: $white;
+            text-transform: uppercase;
+            font-size: 20px;
+            margin-bottom: 5px;
+        }
+
+        &__legend {
+            color: $orange;
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+
+        &__back {
+            position: absolute;
+            top: 100%;
+            color: $white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 18px;
+            background: $primary-color;
+            border: 1px solid $tertiary-color;
+            transition: all 0.3s ease;
+            margin: 0 5px;
+            &:hover {
+                cursor: pointer;
+                background: $tertiary-color;
+            }
+        }
+        .renderer_wrapper {
+            input, textarea, select, ul, li {
+                background: $tertiary-color;
+                color: white;
+                &:disabled {
+                    cursor: not-allowed;
+                }
+            }
+            &.hide {
+                display: none;
+            }
+            display: flex;
+        }
+    }
+
+    &__buttons {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        &__submit {
+            color: $white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 18px;
+            background: $green;
+            cursor: pointer;
+            &:disabled {
+                background: $tertiary-color;
+                opacity: 0.2;
+                cursor: auto;
+            }
+        }
+
+        &__reset {
+            color: $white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 18px;
+            background: $primary-color;
+            border: 1px solid $tertiary-color;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            &:hover {
+                background: $tertiary-color;
+            }
+        }
+    }
+
+    &__factories {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 10px;
+        &__title {
+            width: 100%;
+            color: $white;
+            text-transform: uppercase;
+            font-size: 20px;
+            margin-bottom: 5px;
+        }
+        &__subtitle {
+            width: 100%;
+            color: $white;
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+    }
+    &__button {
+        color: $primary-color;
+        padding: 5px 10px;
+        border-radius: 5px;
+        font-size: 18px;
+        background: $white;
+        border: 1px solid $white;
+        transition: all 0.3s ease;
+        opacity: 0.8;
+        &:hover {
+            cursor: pointer;
+            opacity: 1;
+        }
+    }
+}

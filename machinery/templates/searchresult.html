@@ -1,0 +1,13 @@
+{% load i18n %}
+<div class="cards">
+    {% for document in documents %}
+    <div class="card">
+        <div class="card-body">
+            {% if document.image %}<img src="{{ document.image }}" class="card-img-top" style="width:100%" alt="" />{% endif %}
+            <h5 class="card-title">{{ document.title }}</h5>
+            <p class="card-text">{{ document.summary }}</p>
+            <a href="{{ document.url }}" class="btn btn-primary" target="_blank" rel="noopener">{% translate "See more" %}</a>
+        </div>
+    </div>
+    {% endfor %}
+</div>

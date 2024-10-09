@@ -1,0 +1,29 @@
+identifie et détour le personnage principal de l'image
+détoure tous les animaux présents dans l'image
+isole l'arrière-plan de l'image
+dans cette image, sélectionne et détour chaque arbre individuellement
+peux tu extraire tous les objets bleus de l'image
+détoure le véhicule le plus proche du point de vue de la caméra
+sur cette scène, sépare et isole les bâtiments de l'arrière-plan naturel
+dans l'image, extrait toutes les entités humaines présentes
+identifie et détour chaque fruit visible dans l'image
+sélectionne les éléments d'eau (lacs, rivières) de la photo
+sur ce snapshot, détoure et sépare les objets manufacturés des éléments naturels
+isolation de chaque entité volante (oiseaux, avions) présente
+sélection des éléments de végétation (arbres, fleurs)
+détourage tous les éléments de signalisation routière visibles
+identification des sources de lumière (soleil, lampes par exemple)
+détourage de chaque pièce de mobilier dans une image d'intérieur
+sélection et isole les écrans (tv, ordinateurs) présents
+dans cette scène, extraction des éléments architecturaux distinctifs
+montre les éléments météorologiques dans cette figure
+extraction des vêtements portés par les personnes dans l'image
+trouve dans cette photo les accessoires personnels
+identification des instruments de musique présents dans l'image
+peux tu séparer les animaux domestiques de leur environnement dans ce visuel
+sépare les éléments alimentaires des autres éléments dans ce scan 
+Identification des œuvres d'art dans cette photo d'un musée
+peux tu isoler et extraire  les fenêtres et les portes dans une scène architecturale
+trouve moi toutes les motifs ou textures spécifiques dans ce scan
+Peux tu extraire tous les éléments de texte que tu identifies dans cette image et fabriquer plusieurs images
+Sur ce fichier, peux tu identifier et détourer chaque objet ayant une forme géométrique distincte

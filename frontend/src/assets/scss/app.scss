@@ -1,0 +1,39 @@
+@use 'sass:math';
+@import 'utils/global-import';
+@import 'utils/reset';
+@import 'utils/interface';
+
+
+* {
+    color: $primary-color;
+    font-family: "Open Sans", sans-serif;
+    font-optical-sizing: auto;
+}
+
+
+html {
+    font-size: 10px;
+    overflow-x: hidden;
+
+    &.overflow-hidden {
+        overflow-y: hidden;
+        touch-action: none;
+        -ms-touch-action: none;
+    }
+    
+    font-variant-ligatures: none;
+
+    font-size: calc(#{math.div(1000 , $desktop-mockup-width)}vw - var(0px) / #{math.div($desktop-mockup-width , 10)});
+
+    @include mobile {
+        font-size: calc(#{math.div(1000 , $mobile-mockup-width)}vw - var(0px) / #{math.div($mobile-mockup-width , 10)});
+    }
+}
+
+body {
+    background: $secondary-color;
+
+}
+main {
+    white-space: pre-line;
+}

@@ -1,0 +1,159 @@
+.mediabar {
+    
+    height: 100vh;
+    min-width: 0;
+    width: 0;
+    background: $primary-color;
+    padding: 0;
+    position: relative;
+    transition: all 0.5s ease;
+
+    &.open {
+        min-width: 220px;
+        width: 220px;
+
+        .mediabar__button {
+            svg {
+                rotate: (180deg);
+            }
+        }
+    }
+
+    &::before {
+        content: "";
+        height: 20px;
+        width: 190px;
+        position: absolute;
+        top: 0;
+        left: 30px;
+        background: linear-gradient(180deg, $primary-color 0%, $primary-color 80%, rgba(0,0,0,0) 100%);
+        z-index: 1;
+    }
+    &::after {
+        content: "";
+        height: 20px;
+        width: 190px;
+        position: absolute;
+        bottom: 0;
+        left: 30px;
+        background: linear-gradient(180deg, rgba(0,0,0,0) 0%, $primary-color 20%, $primary-color 100%);
+        z-index: 1;
+    }
+
+    &__button {
+        position: absolute;
+        top: 50%;
+        right: calc(100% + 20px);
+        width: 5px;
+        height: 30px;
+        border-radius: 2px;
+        z-index: 5;
+        transform: translate3d(0, -50%, 0);
+        background: $tertiary-color;
+        cursor: pointer;
+        transition: all 0.3s ease;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &:hover {
+            width: 30px;
+            svg {
+                display: block;
+            }
+        }
+
+        svg {
+            display: none;
+            width: 30px;
+            height: 30px;
+            pointer-events: none;
+            transition: all 0.5s ease;
+        }
+        
+        &.open {
+            svg {
+                rotate: (180deg);
+            }
+        }
+    }
+
+    &__list {
+        height: calc(100vh - 40px);
+        background: $primary-color;
+        width: 100%;
+
+        padding: 20px 0;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        position: relative;
+
+        overflow-y: scroll;
+
+        /* Hide scrollbar for Chrome, Safari and Opera */
+        &::-webkit-scrollbar {
+            display: none;
+        }
+        
+        /* Hide scrollbar for IE, Edge and Firefox */
+        -ms-overflow-style: none;  /* IE and Edge */
+        scrollbar-width: none;  /* Firefox */
+
+        &__indication {
+            color: $white;
+            font-size: 13px;
+            margin-bottom: 20px;
+            padding: 0 20px;
+
+        }
+
+        &__item {
+            width: calc(100% - 40px);
+            margin: 0 20px;
+            margin-bottom: 20px;
+
+            label {
+                color: $white;
+                display: flex;
+                flex-direction: column;
+                cursor: pointer;
+                position: relative;
+
+                font-size: 12px;
+                
+                &.checked {
+                    img {
+                        border: 2px solid #005CC8;
+                    }
+                }
+
+                input[type="checkbox"] {
+                    position: absolute;
+                    top: 5px;
+                    left: 5px;
+                    width: 20px;
+                    height: 20px;
+                    border: 2px solid $tertiary-color;
+                    margin: 0;
+                    margin-right: 5px;
+                    pointer-events: none;
+                    -webkit-appearance: checkbox; /* Style pour Webkit (Chrome, Safari, etc.) */
+                    -moz-appearance: checkbox; /* Style pour Firefox */
+                    appearance: checkbox; /* Style générique */
+                }
+
+                img {
+                    border: 2px solid $tertiary-color;
+                    width: 100%;
+                    border-radius: 5px;
+                    margin-bottom: 5px;
+                    pointer-events: none;
+                }
+            }
+        }
+    }
+}

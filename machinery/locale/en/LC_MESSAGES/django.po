@@ -1,0 +1,445 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-06-19 20:27+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: machinery/bridges/ollama.py:24
+#, python-format
+msgid "Generate text using %s"
+msgstr ""
+
+#: machinery/bridges/ollama.py:29
+#, python-format
+msgid "This pipeline will use model %s and Ollama to generate some text"
+msgstr ""
+
+#: machinery/bridges/replicate.py:32
+#, python-format
+msgid "Generate image WITH %s"
+msgstr ""
+
+#: machinery/bridges/replicate.py:37
+#, python-format
+msgid "This pipeline will use model %s and Replicate to generate some things"
+msgstr ""
+
+#: machinery/bridges/stablediffusion.py:16
+msgid "Generate image from text"
+msgstr ""
+
+#: machinery/bridges/stablediffusion.py:20
+msgid "Generate image from text using stable diffusion"
+msgstr ""
+
+#: machinery/bridges/stablediffusion.py:24
+msgid "Stable diffusion generation"
+msgstr ""
+
+#: machinery/bridges/stablediffusion.py:28
+msgid "Starting StableDiffusion"
+msgstr ""
+
+#: machinery/common/schema.py:8 machinery/pipelines/demo/schema.py:8
+#: machinery/pipelines/featureextractor/schema.py:8
+#: machinery/pipelines/img2txt/schema.py:8
+#: machinery/pipelines/speech2txt/schema.py:8
+#: machinery/pipelines/stablediffusionxl/schema.py:12
+#: machinery/pipelines/stablediffusionxl/schema.py:13
+msgid "Prompt"
+msgstr ""
+
+#: machinery/common/schema.py:12
+msgid "LLM Model"
+msgstr ""
+
+#: machinery/factories/common_schema.py:9
+msgid "label"
+msgstr ""
+
+#: machinery/factories/common_schema.py:9
+msgid "label of your pipeline"
+msgstr ""
+
+#: machinery/factories/common_schema.py:10
+msgid "description"
+msgstr ""
+
+#: machinery/factories/common_schema.py:10
+msgid "description of your pipeline"
+msgstr ""
+
+#: machinery/factories/common_schema.py:11
+msgid "generate description"
+msgstr ""
+
+#: machinery/factories/common_schema.py:12
+msgid "Generate Media ?"
+msgstr ""
+
+#: machinery/factories/common_schema.py:13
+msgid "Input kind"
+msgstr ""
+
+#: machinery/factories/common_schema.py:14
+msgid "Output kind"
+msgstr ""
+
+#: machinery/factories/ollama/factory.py:36
+#, python-brace-format
+msgid ""
+"Define a title for our chat, only give the title without comments or "
+"explanations : user message : {user_prompt}. your answer:  "
+"{assistant_response}"
+msgstr ""
+
+#: machinery/factories/ollama/schema.py:9
+msgid "Model"
+msgstr ""
+
+#: machinery/factories/ollama/schema.py:10
+msgid "System prompt"
+msgstr ""
+
+#: machinery/factories/replicate/factory.py:35
+#: machinery/pipelines/featureextractor/searchupload.py:46
+#: machinery/pipelines/img2txt/llava.py:29
+#, python-brace-format
+msgid ""
+"Define a title for our chat, only give the title without comments or "
+"explanations : user message : {user_prompt}"
+msgstr ""
+
+#: machinery/factories/replicate/factory.py:61
+#, python-format
+msgid "Using %s model on replicate"
+msgstr ""
+
+#: machinery/factories/replicate/factory.py:63
+#: machinery/factories/translation/reference.py:60
+#: machinery/pipelines/featureextractor/searchupload.py:109
+msgid "Extracting results"
+msgstr ""
+
+#: machinery/factories/replicate/schema.py:9
+msgid "Replicate model"
+msgstr ""
+
+#: machinery/factories/replicate/schema.py:10
+msgid "Model version"
+msgstr ""
+
+#: machinery/factories/replicate/schema.py:11
+msgid "Title generation model"
+msgstr ""
+
+#: machinery/factories/search/factory.py:19
+msgid "Create a search pipeline"
+msgstr ""
+
+#: machinery/factories/search/factory.py:23
+msgid ""
+"Allows to create pipeline that will help to search documents within a given "
+"namespace"
+msgstr ""
+
+#: machinery/factories/search/reference.py:30
+#, python-format
+msgid "Search %s"
+msgstr ""
+
+#: machinery/factories/search/reference.py:35
+#, python-format
+msgid "This pipeline will search documents or texts from %s namespace"
+msgstr ""
+
+#: machinery/factories/search/reference.py:41
+#: machinery/factories/translation/reference.py:44
+#, python-brace-format
+msgid ""
+"Define a title for this message, only give the title without comments or "
+"explanations : user message : {user_prompt}"
+msgstr ""
+
+#: machinery/factories/search/reference.py:43
+#, python-format
+msgid "%s search"
+msgstr ""
+
+#: machinery/factories/search/reference.py:44
+#, python-format
+msgid "%s : %s"
+msgstr ""
+
+#: machinery/factories/search/reference.py:71
+msgid "Using RAG"
+msgstr ""
+
+#: machinery/factories/search/schema.py:18
+msgid "Namespace"
+msgstr ""
+
+#: machinery/factories/translation/factory.py:19
+msgid "Translate a text"
+msgstr ""
+
+#: machinery/factories/translation/factory.py:23
+msgid "Translate a text using a neural network"
+msgstr ""
+
+#: machinery/factories/translation/reference.py:32
+#, python-format
+msgid "%s Translation"
+msgstr ""
+
+#: machinery/factories/translation/reference.py:38
+#, python-format
+msgid "This pipeline will translate texts to %s"
+msgstr ""
+
+#: machinery/factories/translation/reference.py:47
+#, python-format
+msgid "%s translation"
+msgstr ""
+
+#: machinery/factories/translation/reference.py:52
+#, python-format
+msgid "Starting translation to %s"
+msgstr ""
+
+#: machinery/factories/translation/reference.py:55
+#, python-brace-format
+msgid ""
+"Please translate this text to {language_label}. Do not add a title nor "
+"introduction nor explanations, only provide the translation. Here is the "
+"text to translate :\n"
+"        {user_prompt}\n"
+"        "
+msgstr ""
+
+#: machinery/factories/translation/schema.py:12
+msgid "Translation Model"
+msgstr ""
+
+#: machinery/factories/translation/schema.py:13
+msgid "Language"
+msgstr ""
+
+#: machinery/pipelines/base.py:159
+#, python-format
+msgid "%s must override a get_title method"
+msgstr ""
+
+#: machinery/pipelines/demo/schema.py:8
+msgid "Type your request"
+msgstr ""
+
+#: machinery/pipelines/demo/selfcare.py:46
+msgid "Self Care"
+msgstr ""
+
+#: machinery/pipelines/demo/selfcare.py:47
+msgid "Get answers and solutions for your problems"
+msgstr ""
+
+#: machinery/pipelines/demo/selfcare.py:54
+msgid "Self care"
+msgstr ""
+
+#: machinery/pipelines/featureextractor/schema.py:9
+#: machinery/pipelines/speech2txt/schema.py:9
+msgid "Files"
+msgstr ""
+
+#: machinery/pipelines/featureextractor/searchupload.py:37
+msgid "Extract features from documents"
+msgstr ""
+
+#: machinery/pipelines/featureextractor/searchupload.py:41
+msgid ""
+"This helps to answers questions and extract informations after selecting "
+"some uploaded documents"
+msgstr ""
+
+#: machinery/pipelines/featureextractor/searchupload.py:48
+msgid "Informations extraction"
+msgstr ""
+
+#: machinery/pipelines/featureextractor/searchupload.py:84
+msgid "Search failed"
+msgstr ""
+
+#: machinery/pipelines/featureextractor/searchupload.py:100
+#, python-brace-format
+msgid "With following data : {output}"
+msgstr ""
+
+#: machinery/pipelines/featureextractor/searchupload.py:101
+#, python-brace-format
+msgid "Answer the following question: {prompt}"
+msgstr ""
+
+#: machinery/pipelines/featureextractor/searchupload.py:107
+msgid "Executing AI with SearchWithUpload"
+msgstr ""
+
+#: machinery/pipelines/img2txt/llava.py:20
+msgid "Ask questions on images"
+msgstr ""
+
+#: machinery/pipelines/img2txt/llava.py:21
+msgid ""
+"After uploading and checking some images, you can run text prompts on them, "
+"such as asking a description of those images"
+msgstr ""
+
+#: machinery/pipelines/img2txt/llava.py:31
+msgid "Image description"
+msgstr ""
+
+#: machinery/pipelines/img2txt/schema.py:8
+msgid ""
+"Check some uploaded files then type your prompt. It will be used for each "
+"file"
+msgstr ""
+
+#: machinery/pipelines/speech2txt/whisper.py:27
+msgid "Speech to text transcription"
+msgstr ""
+
+#: machinery/pipelines/speech2txt/whisper.py:36
+#, python-brace-format
+msgid ""
+"The following is a text transcription of an audio file, generate a title for "
+"this transcription : {text}"
+msgstr ""
+
+#: machinery/pipelines/speech2txt/whisper.py:39
+msgid "Audio to text transcription"
+msgstr ""
+
+#: machinery/pipelines/speech2txt/whisper.py:44
+msgid "<Audio file text transcription>"
+msgstr ""
+
+#: machinery/pipelines/stablediffusionxl/schema.py:19
+msgid "Negative Prompt"
+msgstr ""
+
+#: machinery/pipelines/stablediffusionxl/schema.py:20
+msgid "Input Negative Prompt"
+msgstr ""
+
+#: machinery/pipelines/stablediffusionxl/schema.py:26
+msgid "Num. Outputs"
+msgstr ""
+
+#: machinery/pipelines/stablediffusionxl/schema.py:27
+msgid "Number of images to output."
+msgstr ""
+
+#: machinery/pipelines/stablediffusionxl/schema.py:35
+msgid "Image"
+msgstr ""
+
+#: machinery/pipelines/stablediffusionxl/schema.py:36
+msgid "Input image for img2img or inpaint mode"
+msgstr ""
+
+#: machinery/pipelines/stablediffusionxl/schema.py:44
+msgid "Mask"
+msgstr ""
+
+#: machinery/pipelines/stablediffusionxl/schema.py:45
+msgid ""
+"Input mask for inpaint mode. Black areas will be preserved,white areas will "
+"be inpainted."
+msgstr ""
+
+#: machinery/pipelines/stablediffusionxl/schema.py:55
+msgid "Width"
+msgstr ""
+
+#: machinery/pipelines/stablediffusionxl/schema.py:56
+msgid "Width of output image"
+msgstr ""
+
+#: machinery/pipelines/stablediffusionxl/schema.py:65
+msgid "Height"
+msgstr ""
+
+#: machinery/pipelines/stablediffusionxl/schema.py:66
+msgid "Height of output image"
+msgstr ""
+
+#: machinery/pipelines/stablediffusionxl/schema.py:74
+msgid "High Noise Frac"
+msgstr ""
+
+#: machinery/pipelines/stablediffusionxl/schema.py:75
+msgid "For expert_ensemble_refiner, the fraction of noise to use"
+msgstr ""
+
+#: machinery/pipelines/stablediffusionxl/schema.py:83
+msgid "Num. Inference Steps"
+msgstr ""
+
+#: machinery/pipelines/stablediffusionxl/schema.py:84
+msgid "Number of inference steps"
+msgstr ""
+
+#: machinery/pipelines/stablediffusionxl/schema.py:93
+msgid "Guidance Scale"
+msgstr ""
+
+#: machinery/pipelines/stablediffusionxl/schema.py:94
+msgid "Scale for classifier-free guidance"
+msgstr ""
+
+#: machinery/pipelines/stablediffusionxl/schema.py:103
+#: machinery/pipelines/stablediffusionxl/schema.py:104
+msgid "Use refine ?"
+msgstr ""
+
+#: machinery/pipelines/stablediffusionxl/schema.py:114
+msgid "Seed"
+msgstr ""
+
+#: machinery/pipelines/stablediffusionxl/schema.py:115
+msgid "Random seed. Leave blank to randomize the seed"
+msgstr ""
+
+#: machinery/pipelines/stablediffusionxl/schema.py:121
+#: machinery/pipelines/stablediffusionxl/schema.py:123
+msgid "Scheduler"
+msgstr ""
+
+#: machinery/pipelines/stablediffusionxl/stablediffusionxl.py:29
+msgid "Generate image with Stable Diffusion XL"
+msgstr ""
+
+#: machinery/templates/searchresult.html:9
+msgid "See more"
+msgstr ""
+
+#: machinery/templates/whisperresult.html:9
+msgid "Your browser does not support the audio element."
+msgstr ""
+
+#: machinery/templates/whisperresult.html:12
+msgid "Text transcription :"
+msgstr ""

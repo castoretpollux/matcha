@@ -1,0 +1,138 @@
+.admin-popin {
+    display: none;
+
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    z-index: 20;
+    height: 100vh;
+    width: 100vw;
+    background: rgba($black, 0.8);
+
+    align-items: center;
+    justify-content: center;
+
+    &.open {
+        display: flex;
+    }
+
+    &__container {
+        width: 60vw;
+        height: 65vh;
+        border-radius: 30px;
+        background: $primary-color;
+        border: 1px solid $tertiary-color;
+        padding: 30px 0 30px 30px;
+
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+
+        &__header {
+
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 20px;
+            border-bottom: 1px solid $tertiary-color;
+            padding-bottom: 30px;
+            margin-right: 30px;
+
+            width: 100%;
+            height: max-content;
+
+            &__title {
+                color: $white;
+                font-size: 20px;
+                &::first-letter{
+                    text-transform: capitalize;
+                }
+            }
+
+            &__info {
+                color: $white;
+                background-color: $tertiary-color;
+                padding: 5px 10px;
+                width: max-content;
+                font-size: 18px;
+                border-radius: 5px;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                gap: 5px;
+                svg {
+                    cursor: pointer;
+                }
+            }
+
+            &__close {
+                cursor: pointer;
+                padding: 5px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 5px;
+                margin-left: auto;
+
+                &:hover {
+                    background: $tertiary-color;
+                }
+
+                svg {
+                    width: 20px;
+                    pointer-events: none;
+                }
+            }
+        }
+
+        &__nav {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            padding: 30px 0;
+            gap: 10px;
+            width: 20%;
+            button {
+                font-size: 18px;
+                color: $white;
+                width: 100%;
+                text-align: start;
+                padding: 5px 10px;
+                border-radius: 5px;
+                cursor: pointer;
+                border: 1px solid transparent;
+                transition: all 0.3s ease;
+
+                display: flex;
+                align-items: center;
+                flex-direction: row;
+                gap: 5px;
+                text-transform: capitalize;
+                &.active {
+                    background: $tertiary-color;
+                }
+                &:hover {
+                    border: 1px solid $tertiary-color;
+                }
+                svg {
+                    height: 20px;
+                    width: 20px;
+                }
+            }
+        }
+
+        &__content {
+            width: calc(80% - 40px);
+            height: calc(100% - 30px - 64px);
+            padding: 0 0 0 30px;
+            margin-top: 30px;
+            overflow-y: auto;
+            &__container {
+                padding-right: 20px;
+                min-height: 100%;
+                height: max-content;
+                position: relative;
+            }
+        }
+    }
+}

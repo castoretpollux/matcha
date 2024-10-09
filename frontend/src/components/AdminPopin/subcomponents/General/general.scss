@@ -1,0 +1,52 @@
+.admin {
+    &__general {
+        display: flex;
+        flex-direction: column;
+        gap: 0px;
+        &__item {
+            padding: 10px 0;
+            border-bottom: 1px solid $tertiary-color;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            &:first-of-type {
+                padding-top: 0;
+            }
+            p {
+                color: $white;
+                font-size: 18px;
+                &::first-letter{
+                    text-transform: capitalize;
+                }
+            }
+            button {
+                color: $white;
+                width: max-content;
+                display: block;
+                white-space: nowrap;
+                &::first-letter{
+                    text-transform: capitalize;
+                }
+                padding: 5px 10px;
+                border-radius: 5px;
+                font-size: 18px;
+                transition: all 0.3s ease;
+                background: $primary-color;
+                border: 1px solid $tertiary-color;
+                &:hover {
+                    cursor: pointer;
+                    background: $tertiary-color;
+                }
+                &.red-button {
+                    background-color: $red;
+                    border: 1px solid $red;
+                    &:hover {
+                        background-color: $red-dark;
+                        border: 1px solid $red-dark;
+                    }
+                }
+            }
+        }
+    }
+}

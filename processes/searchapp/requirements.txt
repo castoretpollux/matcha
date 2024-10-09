@@ -1,0 +1,53 @@
+# Django
+Django==5.0.3
+
+# Tree in django models :
+django-mptt==0.16.0
+
+# Rest Framework
+djangorestframework==3.15.1
+
+# CORS headers :
+django-cors-headers==4.3.1
+
+# PostgreSQL Vector Field support
+pgvector==0.2.5
+
+# PostgreSQL database adapter
+psycopg2-binary==2.9.9
+
+# Vectorization :
+sentence-transformers==2.4.0
+
+# NLTK (used for classical, non AI, word tokenization)
+nltk==3.8.1
+
+# Langchain (used for AI word tokenization)
+langchain==0.1.11
+
+# Packages to convert files to text
+unstructured
+unstructured[all-docs]
+
+# Ollama (use to summarize text)
+ollama==0.1.7
+
+# .env loader
+python-dotenv==1.0.1
+
+# Used for web scraping
+beautifulsoup4==4.12.3
+
+# Language detection (without IA)
+langdetect==1.0.9
+
+# Tasks scheduler : useful for long running processes
+django-rq==2.8.1
+rq==1.15.1
+
+# Redis wrapper
+redis==5.0.0
+
+# tesseract (for OCR)
+tesseract==0.1.3
+pytesseract==0.3.10

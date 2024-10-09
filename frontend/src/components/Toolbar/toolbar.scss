@@ -1,0 +1,446 @@
+.toolbar {
+    height: 100vh;
+    min-width: 260px;
+    width: 260px;
+    background: $primary-color;
+    padding: 0;
+    position: fixed;
+    z-index: 2;
+    left: 0;
+    transition: all 0.5s ease;
+    
+    &.opacity-it {
+        .toolbar__nav, .toolbar__header, .toolbar__profil {
+            opacity: 0.4;
+        }
+    }
+    &.close {
+        left: -260px;
+        .toolbar__toggle {
+            svg {
+                rotate: (180deg);
+            }
+        }
+    }
+
+    &__toggle {
+        position: absolute;
+        top: 50%;
+        left: calc(100% + 20px);
+        width: 5px;
+        height: 30px;
+        border-radius: 2px;
+        z-index: 5;
+        transform: translate3d(0, -50%, 0);
+        background: $tertiary-color;
+        cursor: pointer;
+        transition: all 0.3s ease;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &:hover {
+            width: 30px;
+            svg {
+                display: block;
+            }
+        }
+
+        svg {
+            display: none;
+            width: 30px;
+            height: 30px;
+            pointer-events: none;
+            transition: all 0.5s ease;
+        }
+
+        span {
+            &::before {
+                content: "Fermer la fenêtre";
+                display: block;
+                width: 100px;
+                height: max-content;
+                color: $white;
+                font-weight: 600;
+                text-transform: uppercase;
+                font-size: 10px;
+            }
+            position: absolute;
+            left: 40px;
+            
+            width: 100px;
+            height: 30px;
+            
+            background: $tertiary-color;
+            border-radius: 15px;    
+            
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+
+    &__header {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 250px;
+        z-index: 1;
+        background: $primary-color;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        padding: 10px 0;
+
+        &__addchat {
+            width: calc(100% - 10px);
+
+            padding: 7.5px 7.5px;
+            margin-left: 10px;
+            border-radius: 5px;
+            
+            display: flex;
+            align-items: center;
+            gap: 10px;
+    
+            cursor: pointer;
+    
+            background: $primary-color;
+            transition: all 0.3s ease;
+
+
+            &:hover {
+                background: $secondary-color;
+            }
+    
+            &__img {
+                width: 30px;
+                background: white;
+                padding: 2px;
+                border-radius: 50%;
+            }
+            
+            span {
+                font-size: 18px;
+                color: $white;
+                &::first-letter{
+                    text-transform: capitalize;
+                }
+            }
+    
+            svg {
+                margin-left: auto;
+                width: 20px;
+            }
+    
+    
+        }
+    }
+
+    &__nav {
+        height: calc(100vh - 140px);
+        padding: 70px 10px 0 10px;
+        overflow-y: scroll;
+        /* Hide scrollbar for Chrome, Safari and Opera */
+        &::-webkit-scrollbar {
+            display: none;
+        }
+        
+        /* Hide scrollbar for IE, Edge and Firefox */
+        -ms-overflow-style: none;  /* IE and Edge */
+        scrollbar-width: none;  /* Firefox */
+
+
+        &__ul {
+            list-style: none;
+            &__li {
+                border-radius: 5px;
+                position: relative;
+                cursor: pointer;
+                
+                transition: all 0.3s ease;
+                background: $primary-color;
+                padding: 5px;
+                &:hover {
+                    background: $secondary-color;
+                    .toolbar__nav__ul__li__button__cases {
+                        opacity: 1;
+                    }
+                }
+
+                &[chat-selected='true'] {
+                    background: $secondary-color;
+                }
+
+                span {
+                    font-size: 16px;
+                    color: $white;
+                }
+
+                &__button {
+                    width: 100%;
+                    display: flex;
+                    align-items: center;
+                    text-align: start;
+
+                    &__title {
+                        position: relative;
+                        width: calc(100% - 20px);
+                        text-align: start;
+                        height: 100%;
+                        input {
+                            width: 100%;
+                            background: $tertiary-color;
+                            border: none;
+                            color: $white;
+                            font-size: 16px;
+                            &:focus {
+                                outline: none;
+                            }
+                        }
+                        .tooltip {
+                            position: relative;
+                            .visible-text {
+                                text-overflow: ellipsis;
+                                overflow: hidden;
+                                max-width: 100%;
+                                white-space: nowrap;
+                                width: 100%;
+                                display: block;
+                                color: $white;
+                                padding: 7.5px 7.5px;
+                                &-loading {
+                                    display: flex;
+                                    flex-wrap: wrap;
+                                    color: $white;
+                                    &::after {
+                                        content: "";
+                                        display: block;
+                                        width: 10px;
+                                        height: 10px;
+                                        margin-left: 2px;
+                                        animation: flashing 1.5s linear infinite;
+                                    }
+                                }
+                            }
+                            @keyframes flashing {
+                                0% {
+                                    content: '';
+                                }
+                                25% {
+                                    content: ".";
+                                }
+                                50% {
+                                    content: "..";
+                                }
+                                75% {
+                                    content: "...";
+                                    opacity: 1;
+                                }
+                                100% {
+                                    opacity: 0;
+                                }
+                            }
+                            .tooltip-text {
+                                background-color: $tertiary-color;
+                                color: $white;
+                                text-align: center;
+                                border-radius: 6px;
+                                font-size: 12px;
+                                padding: 5px;
+                                position: absolute;
+                                z-index: 1;
+                                bottom: 125%;
+                                left: 0;
+                                &::after {
+                                    content: "";
+                                    position: absolute;
+                                    top: 100%;
+                                    left: 50%;
+                                    margin-left: -5px;
+                                    border-width: 5px;
+                                    border-style: solid;
+                                    border-color: $tertiary-color transparent transparent transparent;
+                                }
+                                
+                            }
+                        }
+                    }
+
+                    &__cases {
+                        position: absolute;
+                        z-index: 1;
+                        right: 5px;
+                        top: 50%;
+                        transform: translateY(-50%); 
+                        
+                        color: $white;
+                        opacity: 0;
+                        padding: 2px;
+
+                        display: flex;
+                        align-items: center;
+                        border-radius: 5px;
+
+                        &:hover {
+                            .more {
+                                display: none;
+                            }
+                            background: $tertiary-color;
+                            .toolbar__nav__ul__li__button__cases__drop {
+                                width: max-content;
+                                overflow: unset;
+                            }
+                        }
+
+                        svg {
+                            width: 20px;
+                        }
+
+                        &__drop {
+                            width: 0;
+                            overflow: hidden;
+                            transition: all 0.3s ease;
+                            display: flex;
+                            align-items: center;
+                            gap: 10px;
+                            .edit {
+                                display: flex;
+                                align-items: center;
+                                svg {
+                                    width: 20px;
+                                    height: 20px;
+                                    pointer-events: none;
+                                }
+                            }
+                            .delete {
+                                display: flex;
+                                align-items: center;
+                                position: relative;
+                                svg {
+                                    width: 20px;
+                                    pointer-events: none;
+                                }
+
+                            }
+
+                        }
+
+                    }
+                }
+            }
+        }
+    }
+
+    &__popin {
+        &__container {
+            max-width: 500px;
+        }
+        &__buttons {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            width: 100%;
+
+            button {
+                color: $white;
+                padding: 5px 10px;
+                border-radius: 5px;
+                font-size: 18px;
+                background: $primary-color;
+                border: 1px solid $tertiary-color;
+                transition: all 0.3s ease;
+                margin-top: 30px;
+                &::first-letter{
+                    text-transform: capitalize;
+                }
+                &:hover {
+                    cursor: pointer;
+                    background: $tertiary-color;
+                }
+                &.btn-delete {
+                    background-color: $red;
+                    border: 1px solid $red;
+                    &:hover {
+                        background-color: $red-dark;
+                        border: 1px solid $red-dark;
+                    }
+                }
+            }
+        }
+    }
+
+    &__profil {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 260px;
+        z-index: 1;
+        background: $primary-color;
+
+        padding: 10px 0;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &__button {
+            width: calc(100% - 30px);
+
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 7.5px;
+
+            border-radius: 5px;
+
+            background: $primary-color;
+            transition: all 0.3s ease;
+
+            position: relative;
+            &:hover {
+                background: $secondary-color;
+                button {
+                    display: flex;
+                }
+            }
+
+
+            &__img {
+                width: 30px;
+                border-radius: 50%;
+            }
+    
+            span {
+                font-size: 16px;
+                color: $white;
+            }
+
+            button {
+                display: none;
+                position: absolute;
+                right: 7.5px;
+                border-radius: 5px;
+                height: 80%;
+                padding: 0 5px;
+                background: $tertiary-color;
+                justify-content: center;
+                align-items: center;
+                cursor: pointer;
+                &:hover {
+                    background: $primary-color;
+                }
+                svg {
+                    width: 20px;
+                }
+
+                &:nth-of-type(1) {
+                    right: 42.5px;
+                }
+            }
+        }
+    }
+}

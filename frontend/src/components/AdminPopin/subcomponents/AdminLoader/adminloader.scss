@@ -1,0 +1,18 @@
+.admin__loader {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    display: none;
+    &.load {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: $tertiary-color;
+        border-radius: 15px;
+        svg {
+            height: 25px;
+            width: 25px;
+            animation: spinner 3s linear infinite;
+        }
+    }
+}

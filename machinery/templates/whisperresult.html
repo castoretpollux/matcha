@@ -1,0 +1,17 @@
+{% load i18n %}
+<div class="cards">
+    {% for item in items %}
+    <div class="fullcard">
+        <div class="card-body">
+            <div>
+                <audio controls>
+                    <source src="{{ site_root }}{{ item.url }}">
+                    {% translate "Your browser does not support the audio element." %}
+                </audio>
+            </div>
+            <h5 class="card-title">{% translate "Text transcription :" %}</h5>
+            <p class="card-text">{{ item.transcript }}</p>
+        </div>
+    </div>
+    {% endfor %}
+</div>

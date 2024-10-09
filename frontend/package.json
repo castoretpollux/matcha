@@ -1,0 +1,39 @@
+{
+	"scripts": {
+		"dev": "vite",
+		"build": "npm --prefix ./src/components/vue-castor/ run build && vite build",
+		"preview": "vite preview --port 4173",
+		"lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore"
+	},
+	"dependencies": {
+		"@jsonforms/core": "^3.2.1",
+		"@jsonforms/vue": "^3.2.1",
+		"@jsonforms/vue-vanilla": "^3.2.1",
+		"lucide-vue-next": "^0.358.0",
+		"markdown-it-emphasis-alt": "^1.0.8",
+		"markdown-it-html5-media": "^0.7.1",
+		"pinia": "^2.0.22",
+		"vue": "^3.2.39",
+		"vue-i18n": "^9.13.1",
+		"vue-material-design-icons": "^5.3.0",
+		"vue-router": "^4.1.5",
+		"vue-uuid": "^3.0.0"
+	},
+	"devDependencies": {
+		"@rushstack/eslint-patch": "^1.2.0",
+		"@vitejs/plugin-vue": "^3.1.0",
+		"@vue/eslint-config-prettier": "^7.0.0",
+		"autoprefixer": "^10.4.11",
+		"cssnano": "^5.1.13",
+		"eslint": "^8.23.1",
+		"eslint-plugin-vue": "^9.5.1",
+		"markdown-it-highlightjs": "^4.0.1",
+		"postcss": "^8.4.16",
+		"postcss-import": "^15.0.0",
+		"prettier": "^2.7.1",
+		"sass": "^1.54.9",
+		"vite": "^3.1.2",
+		"vite-svg-loader": "^3.6.0",
+		"vue-markdown-render": "^2.1.1"
+	}
+}

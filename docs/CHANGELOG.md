@@ -1,0 +1,1 @@
+0.7.0 : This version is the 1st published release. Previous versions were developped internally at [Castor & Pollux](https://www.castoretpollux.com)
